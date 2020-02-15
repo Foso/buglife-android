@@ -11,6 +11,7 @@ public class MainApplication extends Application {
         super.onCreate();
 
         // TODO: Replace `name@example.com` with your email to receive bug reports :)
+        Buglife.setBuglifeUrl("http://192.168.178.53:8080/buglife");
         Buglife.initWithEmail(this, "name@example.com");
     }
 }

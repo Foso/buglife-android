@@ -17,6 +17,7 @@
 
 package com.buglife.sdk.reporting;
 
+import com.buglife.sdk.Buglife;
 import com.buglife.sdk.Log;
 import com.buglife.sdk.NetworkManager;
 
@@ -34,7 +35,7 @@ import okhttp3.Response;
 public final class SubmitReportTask {
     private final NetworkManager mNetworkManager;
     private static final MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
-    private static final String BUGLIFE_REPORT_URL = NetworkManager.BUGLIFE_URL+"/api/v1/reports.json";
+    private static final String BUGLIFE_REPORT_URL = Buglife.BUGLIFE_URL+"/api/v1/reports.json";
 
     public SubmitReportTask() {
         mNetworkManager = NetworkManager.getInstance();

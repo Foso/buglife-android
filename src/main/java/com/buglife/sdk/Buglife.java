@@ -34,8 +34,13 @@ import java.util.List;
  */
 public final class Buglife {
     @Nullable private static Client mClient = null;
+    public static String BUGLIFE_URL = "http://192.168.178.55:8080/buglife";
 
     private Buglife() {}
+
+    public static void setBuglifeUrl( String apiKey) {
+       BUGLIFE_URL = apiKey;
+    }
 
     /**
      * Enables Buglife bug reporting within your app. This method should be called from

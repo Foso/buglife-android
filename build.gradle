@@ -6,10 +6,13 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'digital.wup:android-maven-publish:3.6.2'
     }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'digital.wup.android-maven-publish'
+
 
 allprojects {
     repositories {
@@ -32,6 +35,8 @@ android {
     buildToolsVersion '28.0.3'
 
     defaultConfig {
+        compileSdkVersion 28
+
         minSdkVersion 16
         targetSdkVersion 28
         versionCode PUBLISH_VERSION_CODE
@@ -42,6 +47,20 @@ android {
 
     lintOptions {
         abortOnError false
+    }
+}
+
+publishing {
+    publications {
+        android.libraryVariants.all { variant ->
+
+            "maven${variant.name.capitalize()}Aar"(MavenPublication) {
+                from components.findByName("android${variant.name.capitalize()}")
+                groupId 'de.jensklingenberg.test'
+                artifactId 'test-publish'
+                version "1.0.0-${variant.name}"
+            }
+        }
     }
 }
 
